@@ -21,8 +21,8 @@ typedef struct {
 
 
 typedef struct {
-    char id;
-    float factor;
+    string id;
+    float factorCerteza;
 } Hecho;
 
 
@@ -30,27 +30,15 @@ typedef struct {
 ////////////     FUNCIONES DEL PROGRAMA       ////////////////
 //////////////////////////////////////////////////////////////
 
+int lecturaBC(){
 
+    ifstream BC("BC-ejemplo2.txt"); // para leer del fichero
+    string linea; string cadena; string basura; // para leer el contenido del fichero
 
-
-//////////////////////////////////////////////////////////////
-////////////        PROGRAMA PRINCIPAL        ////////////////
-//////////////////////////////////////////////////////////////
-
-int main (void){
-
-    // HACEMOS LO NECESARIO PARA PODER LEER EL FICHERO DE BC
-    ifstream BC("BC-ejemplo2.txt");
-    string linea; string cadena; string basura;
-
-    // LECTURA DE BC
-    string idString;
-    list<string> listaAntecentes;
-    string consecuenteString;
-    string factorCertezaString;
+    list<string> listaAntecentes;   // para guardar provisionalmente los antecedentes de la regla actual
     int numReglas; BC >> numReglas;    // leemos el numero de reglas
     BC.ignore(1, ' ');  // saltamos a la siguiente linea
-    //getline(BC, linea); // extraemos la linea de la BC
+
     for(int i = 1; i <= numReglas; ++i){
 
         // Obtenemos el contenido de la linea
@@ -61,8 +49,8 @@ int main (void){
         Conocimiento con;
 
         // Lectura idRegla:
-        cadenas >> idString;    // extraemos el id de la regla con ':' incluidos
-        con.id = idString.substr(0, idString.size()-1);
+        cadenas >> cadena;    // extraemos el id de la regla con ':' incluidos
+        con.id = cadena.substr(0, cadena.size()-1);
         cout << con.id << " ";
 
         // Ignoramos la palabra 'si'
@@ -92,16 +80,69 @@ int main (void){
         } con.antecedentes[indAntecedentes] = "\0"; // marca de fin
 
         // Lectura consecuente,
-        cadenas >> consecuenteString;
-        con.consecuente = consecuenteString.substr(0, consecuenteString.size()-1);
+        cadenas >> cadena;
+        con.consecuente = cadena.substr(0, cadena.size()-1);
         cout << con.consecuente << " ";
 
         // Lectura FC
-        cadenas >> factorCertezaString;
-        con.factorCerteza = stof(factorCertezaString.substr(3));
+        cadenas >> cadena;
+        con.factorCerteza = stof(cadena.substr(3));
         cout << con.factorCerteza;
         cout << endl;
     }
 
-    // LECTURA DE LA BASE DE HECHOS
+}
+
+
+int lecturaBH(){
+
+    ifstream BH("BH-ejemplo2.txt"); // para leer del fichero
+    string linea; string cadena; string basura; // para lectura del contenido del fichero
+
+    string objetivo;
+    int numHechos; BH >> numHechos;    // leemos el numero de reglas
+    BH.ignore(1, ' ');  // saltamos a la siguiente linea
+
+    for(int i = 1; i <= numHechos; ++i){
+
+        // Obtenemos el contenido de la linea
+        getline(BH, linea); // extraemos la linea de la BC
+        istringstream cadenas(linea); // obtenemos las cadenas de la linea
+
+        Hecho hecho;
+
+        // Obtenemos el id del hecho
+        cadenas >> cadena;
+        hecho.id = cadena.substr(0,cadena.size()-1);
+        cout << hecho.id << " ";
+
+        // Obtenemos el factor de certeza del hecho
+        cadenas >> cadena;
+        hecho.factorCerteza = stof(cadena.substr(3));
+        cout << hecho.factorCerteza << endl;
+
+    }
+
+    // Ignoramos palabra objetivo
+    BH >> basura;
+
+    // Obtenemos el objetivo
+    BH >> objetivo;
+    cout << objetivo;
+
+}
+
+//////////////////////////////////////////////////////////////
+////////////        PROGRAMA PRINCIPAL        ////////////////
+//////////////////////////////////////////////////////////////
+
+int main (void){
+
+    list<Conocimiento> BC;
+    lecturaBC();
+
+    list<Hecho> BH;
+    lecturaBH();
+
+
 }
