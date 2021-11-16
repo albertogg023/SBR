@@ -1,6 +1,7 @@
-#include <stdlib.h>  // Funcion exit
-#include <string.h>  // Funcion memset
-#include <iostream>  // Variables cin y cout
+#include <stdlib.h>  // funcion exit
+#include <string.h>  // funcion memset
+#include <assert.h> // funcion assert
+#include <iostream>  // variables cin y cout
 #include <sstream>  // iostream
 #include <fstream>  // lectura ficheros
 #include <list> // lista enlazada
@@ -27,7 +28,7 @@ typedef struct {
 
 
 //////////////////////////////////////////////////////////////
-////////////     FUNCIONES DEL PROGRAMA       ////////////////
+/////////     FUNCIONES DE LECTURA DE BC Y BH        /////////
 //////////////////////////////////////////////////////////////
 
 // LECTURA DE LA BASE DE CONOCIMIENTO DE UN FICHERO
@@ -93,12 +94,11 @@ int lecturaBC(string file, list<Conocimiento> & listaConocimientos){
 }
 
 // LECTURA DE LA BASE DE HECHOS DE UN FICHERO
-int lecturaBH(string file, list<Hecho> & listaHechos){
+int lecturaBH(string file, list<Hecho> & listaHechos, string & objetivo){
 
     ifstream BH(file); // para leer del fichero
     string linea; string cadena; string basura; // para lectura del contenido del fichero
 
-    string objetivo;
     int numHechos; BH >> numHechos;    // leemos el numero de reglas
     BH.ignore(1, ' ');  // saltamos a la siguiente linea
 
@@ -134,6 +134,123 @@ int lecturaBH(string file, list<Hecho> & listaHechos){
 
 
 //////////////////////////////////////////////////////////////
+/////////          FUNCIONES AUXILIARES              /////////
+//////////////////////////////////////////////////////////////
+
+// LIBERAR TODA LA MEMORIA DINAMICA RESERVADA DURANTE LA EJECUCION DEL PROGRAMA
+void liberarMemoriaDinamica(list<Conocimiento> & BC){
+    list<Conocimiento>::iterator it = BC.begin();
+    while(it != BC.end()){ // insertamos los antecedentes de la regla
+        delete[] (*it).antecedentes;
+        ++it;
+    }
+}
+
+// DEVUELVE SI LA COLECCION PASADA COMO PARAMETRO ES VACIA O NO
+bool esVacia(list<Conocimiento> & coleccion){
+    return coleccion.empty();
+}
+
+// DEVUELVE SI LA COLECCION PASADA COMO PARAMETRO ES VACIA O NO
+bool esVacia(list<string> & coleccion){
+    return coleccion.empty();
+}
+
+// DEVUELVE UNA LISTA DE STRINGS A PARTIR DE UN ARRAY QUE TENGA MARCA DE FIN
+list<string> arrayStringsDinamicoToList(string * arrayStrings){
+    list<string> listaStrings;
+    int i = 0;
+    while(arrayStrings[i] != "\0"){
+        listaStrings.push_back(arrayStrings[i]);
+        ++i;
+    }
+    return listaStrings;
+}
+
+// COMPRUEBA SI UN HECHO SE ENCUENTRA EN BH
+bool contenida(string meta, list<Hecho> & BH){
+    list<Hecho>::iterator it = BH.begin();
+    while(it != BH.end()){ // recorremos BH
+        if( (*it).id == meta )  // comprobamos si la meta es el hecho actual
+            return true;    // lo hemos encontrado
+        ++it;
+    }
+    return false;   // hemos acabado la busqueda y no lo hemos encontrado
+}
+
+// OBTIENE LAS REGLAS DE LA BC CUYOS CONSECUENTES SEAN EL OBJETIVO
+list<Conocimiento> equiparar(list<Conocimiento> & BC, string objetivo){
+    list<Conocimiento> reglasCompatibles;
+    list<Conocimiento>::iterator it = BC.begin();
+    while(it != BC.end()){ // recorremos BC
+        if( (*it).consecuente == objetivo )  // comprobamos si la meta es el consecuente de la regla actual
+            reglasCompatibles.push_back(*it);    // lo insertamos en la lista de reglas compatibles
+        ++it;
+    }
+    return reglasCompatibles;
+}
+
+// OBTIENE UNA REGLA DEL CJTO CONFLICTO Y LA ELIMINA DE ESTE
+Conocimiento resolver(list<Conocimiento> & cjtoConflicto){
+    assert(!cjtoConflicto.empty()); // comprobamos que efectivamente no es vacio el cjto
+    Conocimiento conocimiento = cjtoConflicto.front();  // devolvemos el primer elemento del cjto
+    cjtoConflicto.pop_front();  // lo eliminamos del cjto
+    return conocimiento;
+}
+
+// OBTIENE UNA META DEL CJTO NUEVASMETAS Y LA ELIMINA DE ESTE
+string popMeta(list<string> & metas){
+    assert(!metas.empty()); // comprobamos que efectivamente no es vacio el cjto
+    string meta = metas.front();  // devolvemos el primer elemento del cjto
+    metas.pop_front();  // lo eliminamos del cjto
+    return meta;
+}
+
+// ANADE UN HECHO A LA BASE DE HECHOS
+void anadirHecho(list<Hecho> & BH, Hecho hecho){
+    BH.push_back(hecho);
+}
+
+
+//////////////////////////////////////////////////////////////
+/////////            FUNCION VERIFICA                /////////
+//////////////////////////////////////////////////////////////
+bool verificar(list<Conocimiento> & BC, list<Hecho> & BH, string objetivo){
+
+    Conocimiento r;
+    string nuevaMeta;
+    list<string> nuevasMetas;
+    bool verificado = false;
+
+    if( contenida(objetivo, BH) )
+        return true;
+
+    list<Conocimiento> cjtoConflicto = equiparar(BC, objetivo);
+
+    while(!esVacia(cjtoConflicto) && !verificado){
+
+        r = resolver(cjtoConflicto); // devuelve una regla de cjtoCOnflicto y la elimina de el
+        nuevasMetas = arrayStringsDinamicoToList(r.antecedentes);   // obtenemos los antecedentes de la regla
+        verificado = true;
+
+        while(!esVacia(nuevasMetas) && verificado){
+            nuevaMeta = popMeta(nuevasMetas);
+            verificado = verificar(BC, BH, nuevaMeta);
+        }
+
+        if(verificado){
+            Hecho meta; meta.id = objetivo; meta.factorCerteza = 0;
+            anadirHecho(BH, meta);
+        }
+
+    }
+
+    return verificado;
+
+}
+
+
+//////////////////////////////////////////////////////////////
 ////////////        PROGRAMA PRINCIPAL        ////////////////
 //////////////////////////////////////////////////////////////
 
@@ -142,8 +259,14 @@ int main (void){
     list<Conocimiento> BC;
     lecturaBC("BC-ejemplo2.txt", BC);
 
+    string objetivo;
     list<Hecho> BH;
-    lecturaBH("BH-ejemplo2.txt", BH);
+    lecturaBH("BH-ejemplo2.txt", BH, objetivo);
 
-    // LIBERAR MEMORIA DINAMICA
+    if(verificar(BC, BH, objetivo))
+        cout << "EXITO";
+    else
+        cout << "FRACASO";
+
+    liberarMemoriaDinamica(BC);
 }
