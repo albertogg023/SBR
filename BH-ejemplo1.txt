@@ -1,0 +1,10 @@
+7
+A, FC=1
+B, FC=-1
+C, FC=-1
+D, FC=1
+E, FC=-1
+F, FC=0.5
+G, FC=0.4
+Objetivo
+CACC
