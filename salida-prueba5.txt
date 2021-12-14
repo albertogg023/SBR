@@ -1,0 +1,128 @@
+Para calcular G con R1
+INICIO CASO 1
+Antecedentes separados con conjunciones
+Antecedente de la regla D con fc: 0.8
+Antecedente de la regla E con fc: 1
+Factor de certeza del antecedente seleccionado es: 0.8
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es 0.8
+Factor de certeza del antecedente D es: 0.8
+Factor de certeza calculado: 0.64
+FIN CASO 3
+
+
+Para calcular Q con R8
+INICIO CASO 3
+Factor de certeza de la regla es 0.6
+Factor de certeza del antecedente F es: 0.9
+Factor de certeza calculado: 0.54
+FIN CASO 3
+Para calcular Q con R9
+INICIO CASO 3
+Factor de certeza de la regla es 0.4
+Factor de certeza del antecedente R es: 0.8
+Factor de certeza calculado: 0.32
+FIN CASO 3
+Para calcular Q con R10
+INICIO CASO 3
+Factor de certeza de la regla es 0.2
+Factor de certeza del antecedente N es: 0.3
+Factor de certeza calculado: 0.06
+FIN CASO 3
+Para cara calcular Q acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.705968
+FIN CASO 2
+
+
+Para calcular K con R2
+INICIO CASO 3
+Factor de certeza de la regla es 0.3
+Factor de certeza del antecedente T es: 1
+Factor de certeza calculado: 0.3
+FIN CASO 3
+Para calcular K con R3
+INICIO CASO 3
+Factor de certeza de la regla es 0.5
+Factor de certeza del antecedente A es: 1
+Factor de certeza calculado: 0.5
+FIN CASO 3
+Para calcular K con R4
+INICIO CASO 3
+Factor de certeza de la regla es 0.7
+Factor de certeza del antecedente C es: 0.65
+Factor de certeza calculado: 0.455
+FIN CASO 3
+Para calcular K con R5
+INICIO CASO 3
+Factor de certeza de la regla es 0.8
+Factor de certeza del antecedente U es: 0.8
+Factor de certeza calculado: 0.64
+FIN CASO 3
+Para calcular K con R6
+INICIO CASO 3
+Factor de certeza de la regla es -0.4
+Factor de certeza del antecedente S es: 0.3
+Factor de certeza calculado: -0.12
+FIN CASO 3
+Para calcular K con R7
+INICIO CASO 3
+Factor de certeza de la regla es -0.6
+Factor de certeza del antecedente P es: 0.7
+Factor de certeza calculado: -0.42
+FIN CASO 3
+Para cara calcular K acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.865458
+FIN CASO 2
+
+
+Para calcular M con R11
+INICIO CASO 3
+Factor de certeza de la regla es 0.2
+Factor de certeza del antecedente G es: 0.64
+Factor de certeza calculado: 0.128
+FIN CASO 3
+Para calcular M con R12
+INICIO CASO 3
+Factor de certeza de la regla es 0.6
+Factor de certeza del antecedente Q es: 0.705968
+Factor de certeza calculado: 0.423581
+FIN CASO 3
+Para calcular M con R13
+INICIO CASO 3
+Factor de certeza de la regla es -0.7
+Factor de certeza del antecedente K es: 0.865458
+Factor de certeza calculado: -0.605821
+FIN CASO 3
+Para cara calcular M acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: -0.215779
+FIN CASO 2
+
+
+EXITO, FACTOR DE CERTEZA DE M es -0.215779
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+FACTORES DE CERTEZA DE LOS HECHOS:
+	D: 0.8
+	E: 1
+	T: 1
+	A: 1
+	C: 0.65
+	U: 0.8
+	S: 0.3
+	P: 0.7
+	F: 0.9
+	R: 0.8
+	N: 0.3
+	G: 0.64
+	Q: 0.705968
+	K: 0.865458
+	M: -0.215779

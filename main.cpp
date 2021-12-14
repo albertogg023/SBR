@@ -1,11 +1,9 @@
-#include <stdlib.h>  // funcion exit
-#include <string.h>  // funcion memset
-#include <assert.h> // funcion assert
+#include <assert.h>
 #include <iostream>  // variables cin y cout
 #include <sstream>  // iostream
 #include <fstream>  // lectura ficheros
 #include <list> // lista enlazada
-#include <climits>
+#include <climits> // MAX_INT y MIN_INT
 using namespace std;
 
 
@@ -37,7 +35,6 @@ int lecturaBC(string file, list<Conocimiento> & listaConocimientos){
 
     ifstream BC(file); // para leer del fichero
     string linea; string cadena; string basura; // para leer el contenido del fichero
-
     list<string> listaAntecentes;   // para guardar provisionalmente los antecedentes de la regla actual
     int numReglas; BC >> numReglas;    // leemos el numero de reglas
     BC.ignore(1, ' ');  // saltamos a la siguiente linea
@@ -90,6 +87,8 @@ int lecturaBC(string file, list<Conocimiento> & listaConocimientos){
 
     }
 
+    BC.close();
+
     return 0;
 
 }
@@ -128,6 +127,8 @@ int lecturaBH(string file, list<Hecho> & listaHechos, string & objetivo){
 
     // Obtenemos el objetivo
     BH >> objetivo;
+
+    BH.close();
 
     return 0;
 
@@ -227,75 +228,75 @@ double getFactorCerteza(list<Hecho> & BH, string id){
 //////////////////////////////////////////////////////////////
 /////////  CASOS PARA CALCULAR FACTORES DE CERTEZA   /////////
 //////////////////////////////////////////////////////////////
-double aplicaCaso3(Conocimiento & reglaAplicada, list<Hecho> & BH){
+double aplicaCaso3(Conocimiento & reglaAplicada, list<Hecho> & BH, ofstream & out){
     double fcCalculado;
     double fcAntecedente = getFactorCerteza(BH, reglaAplicada.antecedentes[0]);
-    cout << "INICIO CASO 3" << endl;
-    cout << "Factor de certeza de la regla es " << reglaAplicada.factorCerteza << endl;
-    cout << "Factor de certeza del antecedente " << reglaAplicada.antecedentes[0] << " es: " << fcAntecedente << endl;
+    out << "INICIO CASO 3" << endl;
+    out << "Factor de certeza de la regla es " << reglaAplicada.factorCerteza << endl;
+    out << "Factor de certeza del antecedente " << reglaAplicada.antecedentes[0] << " es: " << fcAntecedente << endl;
     if(fcAntecedente > 0)    // el factor de certeza del antecedene es mayor que 0
         fcCalculado = reglaAplicada.factorCerteza*fcAntecedente;
     else    // en caso contrario
         fcCalculado = 0;
-    cout << "Factor de certeza calculado: " << fcCalculado << endl;
-    cout << "FIN CASO 3" << endl;
+    out << "Factor de certeza calculado: " << fcCalculado << endl;
+    out << "FIN CASO 3" << endl;
     return fcCalculado;
 }
 
-double aplicaCaso3TrasCaso1(Conocimiento & reglaAplicada, double fcAntecedente, list<Hecho> & BH){
+double aplicaCaso3TrasCaso1(Conocimiento & reglaAplicada, double fcAntecedente, list<Hecho> & BH, ofstream & out){
     double fcCalculado;
-    cout << "INICIO CASO 3" << endl;
-    cout << "Factor de certeza de la regla es " << reglaAplicada.factorCerteza << endl;
-    cout << "Factor de certeza del antecedente " << reglaAplicada.antecedentes[0] << " es: " << fcAntecedente << endl;
+    out << "INICIO CASO 3" << endl;
+    out << "Factor de certeza de la regla es " << reglaAplicada.factorCerteza << endl;
+    out << "Factor de certeza del antecedente " << reglaAplicada.antecedentes[0] << " es: " << fcAntecedente << endl;
     if(fcAntecedente > 0)    // el factor de certeza del antecedene es mayor que 0
         fcCalculado = reglaAplicada.factorCerteza*fcAntecedente;
     else    // en caso contrario
         fcCalculado = 0;
-    cout << "Factor de certeza calculado: " << fcCalculado << endl;
-    cout << "FIN CASO 3" << endl;
+    out << "Factor de certeza calculado: " << fcCalculado << endl;
+    out << "FIN CASO 3" << endl;
     return fcCalculado;
 }
 
-double aplicaCaso1Conjunciones(Conocimiento & reglaAplicada, list<Hecho> & BH){
+double aplicaCaso1Conjunciones(Conocimiento & reglaAplicada, list<Hecho> & BH, ofstream & out){
     double fcAntecedente = getFactorCerteza(BH, reglaAplicada.antecedentes[0]);
     double fcCalculado = fcAntecedente;
-    cout << "INICIO CASO 1" << endl;
-    cout << "Antecedentes separados con conjunciones" << endl;
-    cout << "Antecedente de la regla " << reglaAplicada.antecedentes[0] << " con fc: " << fcAntecedente << endl;
+    out << "INICIO CASO 1" << endl;
+    out << "Antecedentes separados con conjunciones" << endl;
+    out << "Antecedente de la regla " << reglaAplicada.antecedentes[0] << " con fc: " << fcAntecedente << endl;
     unsigned int j = 1;
     while(reglaAplicada.antecedentes[j] != "\0"){
         fcAntecedente = getFactorCerteza(BH, reglaAplicada.antecedentes[j]);
-        cout << "Antecedente de la regla " << reglaAplicada.antecedentes[j] << " con fc: " << fcAntecedente << endl;
+        out << "Antecedente de la regla " << reglaAplicada.antecedentes[j] << " con fc: " << fcAntecedente << endl;
         if( fcAntecedente < fcCalculado){
             fcCalculado = fcAntecedente;
         }
         ++j;
     }
-    cout << "Factor de certeza del antecedente seleccionado es: " << fcCalculado << endl << "FIN CASO 1" << endl;
+    out << "Factor de certeza del antecedente seleccionado es: " << fcCalculado << endl << "FIN CASO 1" << endl;
     return fcCalculado;
 }
 
-double aplicaCaso1Disyunciones(Conocimiento & reglaAplicada, list<Hecho> & BH){
+double aplicaCaso1Disyunciones(Conocimiento & reglaAplicada, list<Hecho> & BH, ofstream & out){
     double fcAntecedente = getFactorCerteza(BH, reglaAplicada.antecedentes[0]);
     double fcCalculado = fcAntecedente;
-    cout << "INICIO CASO 1" << endl;
-    cout << "Antecedentes separados con disyunciones" << endl;
-    cout << "Antecedente de la regla " << reglaAplicada.antecedentes[0] << " con fc: " << fcAntecedente << endl;
+    out << "INICIO CASO 1" << endl;
+    out << "Antecedentes separados con disyunciones" << endl;
+    out << "Antecedente de la regla " << reglaAplicada.antecedentes[0] << " con fc: " << fcAntecedente << endl;
     unsigned int j = 1;
     while(reglaAplicada.antecedentes[j] != "\0"){
         fcAntecedente = getFactorCerteza(BH, reglaAplicada.antecedentes[j]);
-        cout << "Antecedente de la regla " << reglaAplicada.antecedentes[j] << " con fc: " << fcAntecedente << endl;
+        out << "Antecedente de la regla " << reglaAplicada.antecedentes[j] << " con fc: " << fcAntecedente << endl;
         if( fcAntecedente > fcCalculado){
             fcCalculado = fcAntecedente;
         }
         ++j;
     }
-    cout << "Factor de certeza del antecedente seleccionado es: " << fcCalculado << endl << "FIN CASO 1" << endl;
+    out << "Factor de certeza del antecedente seleccionado es: " << fcCalculado << endl << "FIN CASO 1" << endl;
     return fcCalculado;
 }
 
-double aplicaCaso2(double * fcReglas, unsigned int numReglasAplicadas){
-    cout << "INICIO CASO 2" << endl;
+double aplicaCaso2(double * fcReglas, unsigned int numReglasAplicadas, ofstream & out){
+    out << "INICIO CASO 2" << endl;
     double fcCalculada = fcReglas[0];
     for(unsigned int i = 1; i < numReglasAplicadas; i++){
         if(fcCalculada >= 0 && fcReglas[i] >= 0)
@@ -308,9 +309,8 @@ double aplicaCaso2(double * fcReglas, unsigned int numReglasAplicadas){
             else
                 fcCalculada = (fcCalculada + fcReglas[i]) / (1 - abs(fcReglas[i]));
         }
-        cout << fcCalculada << endl;
     }
-    cout << "Factor de certeza calculado: " << fcCalculada << endl << "FIN CASO 2" << endl << endl << endl;
+    out << "Factor de certeza calculado: " << fcCalculada << endl << "FIN CASO 2" << endl;
     return fcCalculada;
 
 }
@@ -319,7 +319,7 @@ double aplicaCaso2(double * fcReglas, unsigned int numReglasAplicadas){
 //////////////////////////////////////////////////////////////
 /////////     FUNCION CALCULA FACTOR DE CERTEZA      /////////
 //////////////////////////////////////////////////////////////
-double calcularFactorCerteza(string objetivo, list<Conocimiento> & cjtoReglasAplicadas, list<Hecho> & BH){
+double calcularFactorCerteza(string objetivo, list<Conocimiento> & cjtoReglasAplicadas, list<Hecho> & BH, ofstream & out){
     double fcAdquirida;
     double fcAntecedente;
     unsigned int numReglasAplicadas = cjtoReglasAplicadas.size();
@@ -329,32 +329,28 @@ double calcularFactorCerteza(string objetivo, list<Conocimiento> & cjtoReglasApl
     for(unsigned int i = 0; i<numReglasAplicadas; i++){
 
         reglaAplicada = resolver(cjtoReglasAplicadas);  // obtenemos y eliminamos una regla del cjto ReglasAplicadas
-        cout << "Para calcular el consecuente " << reglaAplicada.consecuente << " con " << reglaAplicada.id << endl;
+        out << "Para calcular " << reglaAplicada.consecuente << " con " << reglaAplicada.id << endl;
 
         if(reglaAplicada.modoAntecedentes == -1){    // CASO 3: la regla tiene un solo antecedente
-            fcReglas[i] = aplicaCaso3(reglaAplicada, BH);
+            fcReglas[i] = aplicaCaso3(reglaAplicada, BH, out);
         }
         else{   // CASO 1: la regla tiene más de un antecedente
-            if(reglaAplicada.modoAntecedentes == 0){    //  conjunciones
-                fcAntecedente = aplicaCaso1Conjunciones(reglaAplicada, BH); // nos quedamos con el menor fc de sus antecedentes
-                // Aplicamos CASO 3
-                fcReglas[i] = aplicaCaso3TrasCaso1(reglaAplicada, fcAntecedente, BH);
-            }
-            else{   // disyunciones
-                fcAntecedente = aplicaCaso1Disyunciones(reglaAplicada, BH); // nos quedamos con el menor fc de sus antecedentes
-                // Aplicamos CASO 3
-                fcReglas[i] = aplicaCaso3TrasCaso1(reglaAplicada, fcAntecedente, BH);
-            }
+            if(reglaAplicada.modoAntecedentes == 0)   //  conjunciones
+                fcAntecedente = aplicaCaso1Conjunciones(reglaAplicada, BH, out); // nos quedamos con el menor fc de sus antecedentes
+            else   // disyunciones
+                fcAntecedente = aplicaCaso1Disyunciones(reglaAplicada, BH, out); // nos quedamos con el menor fc de sus antecedentes
+            // Aplicamos CASO 3
+            fcReglas[i] = aplicaCaso3TrasCaso1(reglaAplicada, fcAntecedente, BH, out);
         }
-        cout << endl << endl;
     }
 
     // Vemos que factor de certeza debemos de devolver
     if(numReglasAplicadas > 1){ // CASO 2: se ha llegado al objetivo a través de varias ramas
-        fcAdquirida = aplicaCaso2(fcReglas, numReglasAplicadas);
+         out << "Para cara calcular " << reglaAplicada.consecuente << " acumulando evidencia" << endl;
+        fcAdquirida = aplicaCaso2(fcReglas, numReglasAplicadas, out);
     }else   // se ha llegado al objetivo a través de una rama solo
         fcAdquirida = fcReglas[0];
-
+    out << endl << endl;
     return fcAdquirida;
 
 }
@@ -363,7 +359,7 @@ double calcularFactorCerteza(string objetivo, list<Conocimiento> & cjtoReglasApl
 //////////////////////////////////////////////////////////////
 /////////            FUNCION VERIFICA                /////////
 //////////////////////////////////////////////////////////////
-bool verificar(list<Conocimiento> & BC, list<Hecho> & BH, string objetivo){
+bool verificar(list<Conocimiento> & BC, list<Hecho> & BH, string objetivo, ofstream & out){
 
     Conocimiento r;
     string nuevaMeta;
@@ -384,12 +380,12 @@ bool verificar(list<Conocimiento> & BC, list<Hecho> & BH, string objetivo){
 
         while(!esVacia(nuevasMetas) && verificado){
             nuevaMeta = popMeta(nuevasMetas);
-            verificado = verificar(BC, BH, nuevaMeta);
+            verificado = verificar(BC, BH, nuevaMeta, out);
         }
 
         if(verificado && esVacia(cjtoConflicto)){
             Hecho meta; meta.id = objetivo;
-            meta.factorCerteza = calcularFactorCerteza(objetivo, reglasAplicadas, BH);
+            meta.factorCerteza = calcularFactorCerteza(objetivo, reglasAplicadas, BH, out);
             anadirHecho(BH, meta);
         }
 
@@ -404,28 +400,31 @@ bool verificar(list<Conocimiento> & BC, list<Hecho> & BH, string objetivo){
 ////////////        PROGRAMA PRINCIPAL        ////////////////
 //////////////////////////////////////////////////////////////
 
-int main (void){
+
+int main (int argc, char * argv[]){
 
     list<Conocimiento> BC;
-    lecturaBC("BC-ejemplo3.txt", BC);
+    lecturaBC("BC-ejercicio4.txt", BC);
 
     string objetivo;
     list<Hecho> BH;
-    lecturaBH("BH-ejemplo3.1.txt", BH, objetivo);    // -0.4 y 0.6
+    lecturaBH("BH-ejercicio4.txt", BH, objetivo);
+    ofstream out("salida-ejercicio4.txt");
 
-    if(verificar(BC, BH, objetivo))
-        cout << "EXITO" << endl;
+    if(verificar(BC, BH, objetivo, out))
+        out << "EXITO, FACTOR DE CERTEZA DE " << objetivo << " es " << getFactorCerteza(BH, objetivo) << endl;
     else
-        cout << "FRACASO" << endl;
+        out << "FRACASO" << endl;
 
-    cout << endl << endl << endl;
-    cout << "--------------------------------------------------------------------------------------------";
-    cout << endl << endl << endl << endl << "FACTORES DE CERTEZA DE LOS HECHOS:" << endl;
+    out << endl << endl << endl;
+    out << "--------------------------------------------------------------------------------------------";
+    out << endl << endl << endl << endl << "FACTORES DE CERTEZA DE LOS HECHOS:" << endl;
     list<Hecho>::iterator it = BH.begin();
     while(it != BH.end()){ // recorremos BH
-        cout << "\t" << (*it).id << ": " << (*it).factorCerteza << endl;
+        out << "\t" << (*it).id << ": " << (*it).factorCerteza << endl;
         ++it;
     }
 
     liberarMemoriaDinamica(BC);
+    out.close();
 }

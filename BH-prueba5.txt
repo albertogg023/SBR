@@ -1,17 +1,17 @@
 11
-duermeMenos6h, FC=0.8
-noHaceEjercicioFisico, FC=1
-noPedidoTutorias, FC=1
-noPreguntadoPorAulaVirtual, FC=1
-asistidoMenos60%Clases, FC=0.65
-entregoPracticaEnUltimaHora, FC=0.8
-llevaSolo1AsignaturaSuspensa, FC=0.3
-suelePreguntarEnClase, FC=0.7
-notaExamFinalDifiereMas40%DemasExams, FC=0.9
-pidioRevisionExamYSabiaErrores, FC=0.8
-noTerminoExamenPorTiempo, FC=0.3
+D, FC=0.8
+E, FC=1
+T, FC=1
+A, FC=1
+C, FC=0.65
+U, FC=0.8
+S, FC=0.3
+P, FC=0.7
+F, FC=0.9
+R, FC=0.8
+N, FC=0.3
 Objetivo
-mereceAprobar
+M
 
 
 

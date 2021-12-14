@@ -1,0 +1,91 @@
+Para calcular EXP con R1
+INICIO CASO 3
+Factor de certeza de la regla es 0.5
+Factor de certeza del antecedente A es: 1
+Factor de certeza calculado: 0.5
+FIN CASO 3
+Para calcular EXP con R2
+INICIO CASO 3
+Factor de certeza de la regla es 0.9
+Factor de certeza del antecedente B es: -1
+Factor de certeza calculado: 0
+FIN CASO 3
+Para cara calcular EXP acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.5
+FIN CASO 2
+
+
+Para calcular CAN con R3
+INICIO CASO 3
+Factor de certeza de la regla es 0.5
+Factor de certeza del antecedente C es: -1
+Factor de certeza calculado: 0
+FIN CASO 3
+Para calcular CAN con R4
+INICIO CASO 3
+Factor de certeza de la regla es 1
+Factor de certeza del antecedente D es: 1
+Factor de certeza calculado: 1
+FIN CASO 3
+Para cara calcular CAN acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 1
+FIN CASO 2
+
+
+Para calcular CACC con R5
+INICIO CASO 1
+Antecedentes separados con conjunciones
+Antecedente de la regla EXP con fc: 0.5
+Antecedente de la regla E con fc: -1
+Factor de certeza del antecedente seleccionado es: -1
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es -0.5
+Factor de certeza del antecedente EXP es: -1
+Factor de certeza calculado: 0
+FIN CASO 3
+Para calcular CACC con R6
+INICIO CASO 3
+Factor de certeza de la regla es 0.5
+Factor de certeza del antecedente CAN es: 1
+Factor de certeza calculado: 0.5
+FIN CASO 3
+Para calcular CACC con R7
+INICIO CASO 1
+Antecedentes separados con conjunciones
+Antecedente de la regla F con fc: 0.5
+Antecedente de la regla G con fc: 0.4
+Factor de certeza del antecedente seleccionado es: 0.4
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es 0.7
+Factor de certeza del antecedente F es: 0.4
+Factor de certeza calculado: 0.28
+FIN CASO 3
+Para cara calcular CACC acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.64
+FIN CASO 2
+
+
+EXITO, FACTOR DE CERTEZA DE CACC es 0.64
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+FACTORES DE CERTEZA DE LOS HECHOS:
+	A: 1
+	B: -1
+	C: -1
+	D: 1
+	E: -1
+	F: 0.5
+	G: 0.4
+	EXP: 0.5
+	CAN: 1
+	CACC: 0.64
