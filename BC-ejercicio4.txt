@@ -1,8 +1,0 @@
-7
-R1: Si A23 Entonces E, FC=0.5
-R2: Si AM3 Entonces E, FC=0.9
-R3: Si C23 Entonces CAN, FC=0.5
-R4: Si CM3 Entonces CAN, FC=1
-R5: Si E y AC Entonces CA, FC=-0.5
-R6: Si CAN Entonces CA, FC=0.5
-R7: Si J y B Entonces CA, FC=0.7

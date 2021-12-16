@@ -1,9 +1,0 @@
-7
-R1: Si A Entonces EXP, FC=0.5
-R2: Si B Entonces EXP, FC=0.9
-R3: Si C Entonces CAN, FC=0.5
-R4: Si D Entonces CAN, FC=1
-R5: Si EXP y E Entonces CACC, FC=-0.5
-R6: Si CAN Entonces CACC, FC=0.5
-R7: Si F y G Entonces CACC, FC=0.7
-
