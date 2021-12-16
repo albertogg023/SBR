@@ -1,0 +1,17 @@
+13
+R1: Si D y E Entonces G, FC=0.8
+R2: Si T Entonces K, FC=0.3
+R3: Si A Entonces K, FC=0.5
+R4: Si C Entonces K, FC=0.7
+R5: Si U Entonces K, FC=0.8
+R6: Si S Entonces K, FC=-0.4
+R7: Si P Entonces K, FC=-0.6
+R8: Si F Entonces Q, FC=0.6
+R9: Si R Entonces Q, FC=0.4
+R10: Si N Entonces Q, FC=0.2
+R11: Si G Entonces M, FC=0.2
+R12: Si Q Entonces M, FC=0.6
+R13: Si K Entonces M, FC=-0.7
+
+
+

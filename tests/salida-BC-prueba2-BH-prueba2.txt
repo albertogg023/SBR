@@ -1,0 +1,66 @@
+Base de conocimiento usada: BC-prueba2.txt
+
+Base de hechos utilizada: BH-prueba2.txt
+
+Objetivo a calcular: I
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+Para calcular C con R1
+INICIO CASO 1
+Antecedentes separados con disyunciones
+Antecedente de la regla A con fc: 0.6
+Antecedente de la regla B con fc: 0.4
+Factor de certeza del antecedente seleccionado es: 0.6
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es 0.7
+Factor de certeza del antecedente A es: 0.6
+Factor de certeza calculado: 0.42
+FIN CASO 3
+Para calcular C con R2
+INICIO CASO 1
+Antecedentes separados con conjunciones
+Antecedente de la regla D con fc: 0.9
+Antecedente de la regla E con fc: 0.7
+Antecedente de la regla F con fc: 0.8
+Factor de certeza del antecedente seleccionado es: 0.7
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es 0.5
+Factor de certeza del antecedente D es: 0.7
+Factor de certeza calculado: 0.35
+FIN CASO 3
+Para calcular C acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.623
+FIN CASO 2
+
+
+Para calcular H con R4
+INICIO CASO 3
+Factor de certeza de la regla es 0.6
+Factor de certeza del antecedente G es: -0.3
+Factor de certeza calculado: 0
+FIN CASO 3
+
+
+Para calcular I con R3
+INICIO CASO 1
+Antecedentes separados con disyunciones
+Antecedente de la regla C con fc: 0.623
+Antecedente de la regla H con fc: 0
+Factor de certeza del antecedente seleccionado es: 0.623
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es 0.65
+Factor de certeza del antecedente C es: 0.623
+Factor de certeza calculado: 0.40495
+FIN CASO 3
+
+
+EXITO, FACTOR DE CERTEZA DE I es 0.40495

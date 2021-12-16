@@ -1,0 +1,17 @@
+11
+D, FC=0.8
+E, FC=1
+T, FC=1
+A, FC=1
+C, FC=0.65
+U, FC=0.8
+S, FC=0.3
+P, FC=0.7
+F, FC=0.9
+R, FC=0.8
+N, FC=0.3
+Objetivo
+M
+
+
+

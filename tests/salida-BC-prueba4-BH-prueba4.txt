@@ -1,0 +1,85 @@
+Base de conocimiento usada: BC-prueba4.txt
+
+Base de hechos utilizada: BH-prueba4.txt
+
+Objetivo a calcular: CA
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+Para calcular E con R1
+INICIO CASO 3
+Factor de certeza de la regla es 0.5
+Factor de certeza del antecedente A23 es: 1
+Factor de certeza calculado: 0.5
+FIN CASO 3
+Para calcular E con R2
+INICIO CASO 3
+Factor de certeza de la regla es 0.9
+Factor de certeza del antecedente AM3 es: -1
+Factor de certeza calculado: 0
+FIN CASO 3
+Para calcular E acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.5
+FIN CASO 2
+
+
+Para calcular CAN con R3
+INICIO CASO 3
+Factor de certeza de la regla es 0.5
+Factor de certeza del antecedente C23 es: -1
+Factor de certeza calculado: 0
+FIN CASO 3
+Para calcular CAN con R4
+INICIO CASO 3
+Factor de certeza de la regla es 1
+Factor de certeza del antecedente CM3 es: 1
+Factor de certeza calculado: 1
+FIN CASO 3
+Para calcular CAN acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 1
+FIN CASO 2
+
+
+Para calcular CA con R5
+INICIO CASO 1
+Antecedentes separados con conjunciones
+Antecedente de la regla E con fc: 0.5
+Antecedente de la regla AC con fc: -1
+Factor de certeza del antecedente seleccionado es: -1
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es -0.5
+Factor de certeza del antecedente E es: -1
+Factor de certeza calculado: 0
+FIN CASO 3
+Para calcular CA con R6
+INICIO CASO 3
+Factor de certeza de la regla es 0.5
+Factor de certeza del antecedente CAN es: 1
+Factor de certeza calculado: 0.5
+FIN CASO 3
+Para calcular CA con R7
+INICIO CASO 1
+Antecedentes separados con conjunciones
+Antecedente de la regla J con fc: 0.4
+Antecedente de la regla B con fc: 0.5
+Factor de certeza del antecedente seleccionado es: 0.4
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es 0.7
+Factor de certeza del antecedente J es: 0.4
+Factor de certeza calculado: 0.28
+FIN CASO 3
+Para calcular CA acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.64
+FIN CASO 2
+
+
+EXITO, FACTOR DE CERTEZA DE CA es 0.64

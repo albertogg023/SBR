@@ -1,0 +1,10 @@
+7
+J, FC=0.4
+A23, FC=1
+AM3, FC=-1
+CM3, FC=1
+C23, FC=-1
+AC, FC=-1
+B, FC=0.5
+Objetivo
+CA

@@ -1,0 +1,43 @@
+Base de conocimiento usada: BC-prueba3.txt
+
+Base de hechos utilizada: BH-prueba3-ganaRM.txt
+
+Objetivo a calcular: ganaRM
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+Para calcular ganaRM con R2
+INICIO CASO 3
+Factor de certeza de la regla es 0.75
+Factor de certeza del antecedente arbMod es: 1
+Factor de certeza calculado: 0.75
+FIN CASO 3
+Para calcular ganaRM con R3
+INICIO CASO 3
+Factor de certeza de la regla es -0.4
+Factor de certeza del antecedente publicoMayEST es: 0.65
+Factor de certeza calculado: -0.26
+FIN CASO 3
+Para calcular ganaRM con R5
+INICIO CASO 1
+Antecedentes separados con conjunciones
+Antecedente de la regla les2pivRM con fc: 1
+Antecedente de la regla visitanteRM con fc: 1
+Factor de certeza del antecedente seleccionado es: 1
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es -0.1
+Factor de certeza del antecedente les2pivRM es: 1
+Factor de certeza calculado: -0.1
+FIN CASO 3
+Para calcular ganaRM acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.624625
+FIN CASO 2
+
+
+EXITO, FACTOR DE CERTEZA DE ganaRM es 0.624625

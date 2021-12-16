@@ -1,0 +1,141 @@
+Base de conocimiento usada: BC-prueba6.txt
+
+Base de hechos utilizada: BH-prueba6.txt
+
+Objetivo a calcular: Y
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+Para calcular N con R1
+INICIO CASO 3
+Factor de certeza de la regla es 0.3
+Factor de certeza del antecedente I es: 1
+Factor de certeza calculado: 0.3
+FIN CASO 3
+Para calcular N con R2
+INICIO CASO 1
+Antecedentes separados con disyunciones
+Antecedente de la regla D con fc: 0.8
+Antecedente de la regla C con fc: 0.35
+Factor de certeza del antecedente seleccionado es: 0.8
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es 0.7
+Factor de certeza del antecedente D es: 0.8
+Factor de certeza calculado: 0.56
+FIN CASO 3
+Para calcular N con R3
+INICIO CASO 3
+Factor de certeza de la regla es 0.4
+Factor de certeza del antecedente P es: 0.8
+Factor de certeza calculado: 0.32
+FIN CASO 3
+Para calcular N con R4
+INICIO CASO 3
+Factor de certeza de la regla es -0.5
+Factor de certeza del antecedente A es: -1
+Factor de certeza calculado: 0
+FIN CASO 3
+Para calcular N acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.79056
+FIN CASO 2
+
+
+Para calcular U con R5
+INICIO CASO 3
+Factor de certeza de la regla es 0.6
+Factor de certeza del antecedente F es: 0.2
+Factor de certeza calculado: 0.12
+FIN CASO 3
+Para calcular U con R6
+INICIO CASO 3
+Factor de certeza de la regla es 0.4
+Factor de certeza del antecedente E es: 0.3
+Factor de certeza calculado: 0.12
+FIN CASO 3
+Para calcular U acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.2256
+FIN CASO 2
+
+
+Para calcular R con R7
+INICIO CASO 3
+Factor de certeza de la regla es 0.5
+Factor de certeza del antecedente T es: 0.1
+Factor de certeza calculado: 0.05
+FIN CASO 3
+Para calcular R con R8
+INICIO CASO 3
+Factor de certeza de la regla es 0.35
+Factor de certeza del antecedente H es: 1
+Factor de certeza calculado: 0.35
+FIN CASO 3
+Para calcular R con R9
+INICIO CASO 3
+Factor de certeza de la regla es -0.45
+Factor de certeza del antecedente S es: -0.5
+Factor de certeza calculado: 0
+FIN CASO 3
+Para calcular R acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.3825
+FIN CASO 2
+
+
+Para calcular Z con R10
+INICIO CASO 1
+Antecedentes separados con disyunciones
+Antecedente de la regla P con fc: 0.8
+Antecedente de la regla O con fc: 0.7
+Factor de certeza del antecedente seleccionado es: 0.8
+FIN CASO 1
+INICIO CASO 3
+Factor de certeza de la regla es 0.9
+Factor de certeza del antecedente P es: 0.8
+Factor de certeza calculado: 0.72
+FIN CASO 3
+
+
+Para calcular Y con R12
+INICIO CASO 3
+Factor de certeza de la regla es 0.3
+Factor de certeza del antecedente N es: 0.79056
+Factor de certeza calculado: 0.237168
+FIN CASO 3
+Para calcular Y con R13
+INICIO CASO 3
+Factor de certeza de la regla es -0.4
+Factor de certeza del antecedente U es: 0.2256
+Factor de certeza calculado: -0.09024
+FIN CASO 3
+Para calcular Y con R14
+INICIO CASO 3
+Factor de certeza de la regla es -0.3
+Factor de certeza del antecedente R es: 0.3825
+Factor de certeza calculado: -0.11475
+FIN CASO 3
+Para calcular Y con R15
+INICIO CASO 3
+Factor de certeza de la regla es 0.45
+Factor de certeza del antecedente Z es: 0.72
+Factor de certeza calculado: 0.324
+FIN CASO 3
+Para calcular Y con R16
+INICIO CASO 3
+Factor de certeza de la regla es 0.45
+Factor de certeza del antecedente F es: 0.2
+Factor de certeza calculado: 0.09
+FIN CASO 3
+Para calcular Y acumulando evidencia
+INICIO CASO 2
+Factor de certeza calculado: 0.417328
+FIN CASO 2
+
+
+EXITO, FACTOR DE CERTEZA DE Y es 0.417328
